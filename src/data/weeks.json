@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Web'e Giriş ve HTML",
+    "description": "Tarayıcı ile sunucunun nasıl konuştuğunu ve bir web sayfasının iskeletini öğreniyoruz.",
+    "goals": [
+      "İstemci ve sunucu arasındaki farkı açıklamak",
+      "Anlamsal (semantic) HTML etiketlerini kullanmak",
+      "Basit bir kişisel sayfa oluşturmak"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "CSS ile Biçimlendirme",
+    "description": "Seçiciler, kutu modeli ve renklerle sayfaya görünüm kazandırıyoruz.",
+    "goals": [
+      "CSS seçicilerini doğru kullanmak",
+      "Kutu modelini (margin, padding, border) açıklamak",
+      "CSS değişkenleriyle renk paleti tanımlamak"
+    ]
+  }
+]

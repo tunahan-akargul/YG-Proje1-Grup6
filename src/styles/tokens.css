@@ -1,0 +1,64 @@
+/*
+  Tasarım değişkenleri (renk, yazı tipi, boşluk, köşe).
+  Bileşenlerde renk doğrudan yazılmaz; hep bu değişkenler kullanılır.
+  Böylece tema değişince bütün sayfa birlikte değişir.
+
+  Palet: sıcak, turuncu vurgulu. Metin renkleri WCAG AA kontrast oranını
+  (normal metinde en az 4.5:1) karşılayacak şekilde seçildi.
+*/
+:root {
+  color-scheme: light;
+
+  --color-bg: #faf6f1;
+  --color-surface: #ffffff;
+  --color-surface-warm: #fff4ea;
+  --color-text: #1f1813;
+  --color-text-muted: #6b5d52;
+  --color-border: #ece2d7;
+
+  /* Vurgu rengi: düğmeler, seçili öğeler, odak çerçevesi */
+  --color-primary: #c2410c;
+  --color-primary-text: #ffffff;
+  /* İlerleme halkası ve çubukları */
+  --color-accent: #dc4c0b;
+
+  /* Görev durumları */
+  --color-todo: #78716c;
+  --color-progress: #1d4ed8;
+  --color-done: #15803d;
+  --color-danger: #b91c1c;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius: 14px;
+  --shadow: 0 1px 2px rgb(60 30 10 / 0.04), 0 4px 16px rgb(60 30 10 / 0.06);
+  --font: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Karanlık tema: <html data-theme="dark"> olduğunda devreye girer. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #15110e;
+  --color-surface: #201a16;
+  --color-surface-warm: #2a1f17;
+  --color-text: #f6efe8;
+  --color-text-muted: #b6a99d;
+  --color-border: #3a2f28;
+
+  --color-primary: #fb923c;
+  --color-primary-text: #1a0f06;
+  --color-accent: #fb923c;
+
+  --color-todo: #a8a29e;
+  --color-progress: #60a5fa;
+  --color-done: #4ade80;
+  --color-danger: #f87171;
+
+  --shadow: none;
+}
