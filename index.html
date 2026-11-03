@@ -5,6 +5,15 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ders Deneyimi Panosu</title>
+    <script>
+      // Kayıtlı temayı sayfa çizilmeden uygula; açılışta beyaz ekran yanıp sönmesin.
+      try {
+        var saved = JSON.parse(localStorage.getItem('ders-panosu:theme'))
+        var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.dataset.theme =
+          saved === 'dark' || saved === 'light' ? saved : dark ? 'dark' : 'light'
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="app"></div>

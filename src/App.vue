@@ -10,6 +10,7 @@ import ProgressSummary from '@/components/ProgressSummary.vue'
 import WeekRoadmap from '@/components/WeekRoadmap.vue'
 import WeekDetail from '@/components/WeekDetail.vue'
 import TaskPanel from '@/components/TaskPanel.vue'
+import ThemeToggle from '@/components/ThemeToggle.vue'
 
 const weeks: Week[] = weeksData
 const { tasks, statusOf } = useTasks()
@@ -49,9 +50,12 @@ watch(
 
 <template>
   <header class="app-header">
-    <div class="container">
-      <h1>Ders Deneyimi Panosu</h1>
-      <p class="subtitle">Web Teknolojilerine Giriş</p>
+    <div class="container header-inner">
+      <div>
+        <h1>Ders Deneyimi Panosu</h1>
+        <p class="subtitle">Web Teknolojilerine Giriş</p>
+      </div>
+      <ThemeToggle />
     </div>
   </header>
 
@@ -78,6 +82,13 @@ watch(
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-6) 0;
   margin-bottom: var(--space-6);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
 }
 
 .subtitle {
