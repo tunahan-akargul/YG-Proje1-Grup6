@@ -48,7 +48,7 @@ const message = computed(() => {
   align-items: center;
   gap: var(--space-6);
   padding: var(--space-6);
-  background: var(--color-surface);
+  background: linear-gradient(120deg, var(--color-surface-warm), var(--color-surface) 70%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);

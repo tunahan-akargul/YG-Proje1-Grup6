@@ -64,7 +64,7 @@ circle {
 }
 
 .fill {
-  stroke: var(--color-done);
+  stroke: var(--color-accent);
   stroke-linecap: round;
   transition: stroke-dashoffset 0.4s ease;
 }

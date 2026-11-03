@@ -29,7 +29,7 @@ defineProps<{
 
 .fill {
   height: 100%;
-  background: var(--color-done);
+  background: var(--color-accent);
   border-radius: inherit;
   transition: width 0.4s ease;
 }
