@@ -1,10 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import weeksData from '@/data/weeks.json'
 import tasksData from '@/data/tasks.json'
 import type { Task, Week } from '@/types'
+import { useStorage } from '@/composables/useStorage'
+import WeekRoadmap from '@/components/WeekRoadmap.vue'
+import WeekDetail from '@/components/WeekDetail.vue'
 
 const weeks: Week[] = weeksData
 const tasks: Task[] = tasksData
+
+// Seçili hafta hatırlanır; sayfa yenilenince aynı hafta açık kalır.
+const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
+
+// Kayıtlı hafta artık veride yoksa (ör. JSON değişti) ilk haftaya düşülür.
+const selectedWeek = computed(
+  () => weeks.find((week) => week.id === selectedWeekId.value) ?? weeks[0],
+)
+
+const selectedWeekTasks = computed(() =>
+  tasks.filter((task) => task.weekId === selectedWeek.value?.id),
+)
 </script>
 
 <template>
@@ -16,8 +32,14 @@ const tasks: Task[] = tasksData
   </header>
 
   <main class="container">
-    <!-- Geçici: veri doğru yükleniyor mu diye kontrol. Yerini yol haritası bileşeni alacak. -->
-    <p>{{ weeks.length }} hafta, {{ tasks.length }} görev yüklendi.</p>
+    <WeekRoadmap
+      :weeks="weeks"
+      :tasks="tasks"
+      :selected-id="selectedWeek?.id ?? 0"
+      @select="selectedWeekId = $event"
+    />
+
+    <WeekDetail v-if="selectedWeek" :week="selectedWeek" :tasks="selectedWeekTasks" />
   </main>
 </template>
 
@@ -32,5 +54,9 @@ const tasks: Task[] = tasksData
 .subtitle {
   margin: var(--space-1) 0 0;
   color: var(--color-text-muted);
+}
+
+main {
+  padding-bottom: var(--space-8);
 }
 </style>
