@@ -5,12 +5,14 @@ import type { Week } from '@/types'
 import { useStorage } from '@/composables/useStorage'
 import { useTasks } from '@/composables/useTasks'
 import { useFilters } from '@/composables/useFilters'
+import { calculateProgress } from '@/composables/useProgress'
+import ProgressSummary from '@/components/ProgressSummary.vue'
 import WeekRoadmap from '@/components/WeekRoadmap.vue'
 import WeekDetail from '@/components/WeekDetail.vue'
 import TaskPanel from '@/components/TaskPanel.vue'
 
 const weeks: Week[] = weeksData
-const { tasks } = useTasks()
+const { tasks, statusOf } = useTasks()
 const { filters } = useFilters()
 
 // Seçili hafta hatırlanır; sayfa yenilenince aynı hafta açık kalır.
@@ -19,6 +21,15 @@ const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
 // Kayıtlı hafta artık veride yoksa (ör. JSON değişti) ilk haftaya düşülür.
 const selectedWeek = computed(
   () => weeks.find((week) => week.id === selectedWeekId.value) ?? weeks[0],
+)
+
+const overallProgress = computed(() => calculateProgress(tasks.value, statusOf))
+
+const selectedWeekProgress = computed(() =>
+  calculateProgress(
+    tasks.value.filter((task) => task.weekId === selectedWeek.value?.id),
+    statusOf,
+  ),
 )
 
 // Karttan hafta seçmek görev listesini de o haftaya süzer.
@@ -45,15 +56,17 @@ watch(
   </header>
 
   <main class="container">
+    <ProgressSummary :progress="overallProgress" :week-count="weeks.length" />
+
     <WeekRoadmap
+      class="section"
       :weeks="weeks"
-      :tasks="tasks"
       :selected-id="selectedWeek?.id ?? 0"
       @select="selectWeek"
     />
 
-    <div v-if="selectedWeek" class="week-layout">
-      <WeekDetail :week="selectedWeek" />
+    <div v-if="selectedWeek" class="week-layout section">
+      <WeekDetail :week="selectedWeek" :progress="selectedWeekProgress" />
       <TaskPanel :weeks="weeks" :default-week-id="selectedWeek.id" />
     </div>
   </main>
@@ -76,13 +89,16 @@ main {
   padding-bottom: var(--space-8);
 }
 
+.section {
+  margin-top: var(--space-8);
+}
+
 /* Masaüstünde hafta detayı solda, görevler sağda; dar ekranda alt alta. */
 .week-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
   gap: var(--space-6);
   align-items: start;
-  margin-top: var(--space-6);
 }
 
 @media (max-width: 900px) {

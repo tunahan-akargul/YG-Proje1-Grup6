@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { Week } from '@/types'
+import type { Progress } from '@/composables/useProgress'
+import ProgressBar from './ProgressBar.vue'
 
 defineProps<{
   week: Week
+  progress: Progress
 }>()
 </script>
 
@@ -11,6 +14,13 @@ defineProps<{
     <p class="eyebrow">{{ week.id }}. hafta</p>
     <h2 id="week-detail-title">{{ week.title }}</h2>
     <p class="description">{{ week.description }}</p>
+
+    <div class="week-progress">
+      <p>
+        Bu hafta: <strong>{{ progress.done }} / {{ progress.total }}</strong> görev tamamlandı
+      </p>
+      <ProgressBar :percent="progress.percent" :label="`${week.id}. hafta ilerlemesi`" />
+    </div>
 
     <h3>Öğrenme hedefleri</h3>
     <ul class="goals">
@@ -38,6 +48,11 @@ defineProps<{
 
 .description {
   color: var(--color-text-muted);
+}
+
+.week-progress p {
+  margin: 0 0 var(--space-2);
+  font-size: 0.9rem;
 }
 
 h3 {

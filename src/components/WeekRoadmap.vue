@@ -1,17 +1,23 @@
 <script setup lang="ts">
-import type { Task, Week } from '@/types'
+import type { Week } from '@/types'
+import { useTasks } from '@/composables/useTasks'
+import { calculateProgress } from '@/composables/useProgress'
 import WeekCard from './WeekCard.vue'
 
-const props = defineProps<{
+defineProps<{
   weeks: Week[]
-  tasks: Task[]
   selectedId: number
 }>()
 
 const emit = defineEmits<{ select: [weekId: number] }>()
 
-function taskCountOf(weekId: number): number {
-  return props.tasks.filter((task) => task.weekId === weekId).length
+const { tasks, statusOf } = useTasks()
+
+function progressOf(weekId: number) {
+  return calculateProgress(
+    tasks.value.filter((task) => task.weekId === weekId),
+    statusOf,
+  )
 }
 </script>
 
@@ -22,7 +28,7 @@ function taskCountOf(weekId: number): number {
       <li v-for="week in weeks" :key="week.id">
         <WeekCard
           :week="week"
-          :task-count="taskCountOf(week.id)"
+          :progress="progressOf(week.id)"
           :selected="week.id === selectedId"
           @select="emit('select', $event)"
         />

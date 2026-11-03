@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import type { Week } from '@/types'
+import type { Progress } from '@/composables/useProgress'
+import ProgressBar from './ProgressBar.vue'
 
 defineProps<{
   week: Week
-  taskCount: number
+  progress: Progress
   selected: boolean
 }>()
 
@@ -15,13 +17,17 @@ const emit = defineEmits<{ select: [weekId: number] }>()
   <button
     type="button"
     class="week-card"
-    :class="{ 'is-selected': selected }"
+    :class="{ 'is-selected': selected, 'is-complete': progress.total > 0 && progress.percent === 100 }"
     :aria-pressed="selected"
     @click="emit('select', week.id)"
   >
-    <span class="week-number">{{ week.id }}. hafta</span>
+    <span class="week-number">
+      {{ week.id }}. hafta
+      <span v-if="progress.total > 0 && progress.percent === 100" class="badge">✓ Tamamlandı</span>
+    </span>
     <span class="week-title">{{ week.title }}</span>
-    <span class="week-meta">{{ week.goals.length }} hedef · {{ taskCount }} görev</span>
+    <span class="week-meta">{{ progress.done }} / {{ progress.total }} görev · %{{ progress.percent }}</span>
+    <ProgressBar :percent="progress.percent" :label="`${week.id}. hafta ilerlemesi`" />
   </button>
 </template>
 
@@ -29,12 +35,11 @@ const emit = defineEmits<{ select: [weekId: number] }>()
 .week-card {
   display: flex;
   flex-direction: column;
-  gap: var(--space-1);
+  gap: var(--space-2);
   width: 100%;
   height: 100%;
   padding: var(--space-4);
   text-align: left;
-  font: inherit;
   color: var(--color-text);
   background: var(--color-surface);
   border: 2px solid var(--color-border);
@@ -55,11 +60,20 @@ const emit = defineEmits<{ select: [weekId: number] }>()
 }
 
 .week-number {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--color-primary);
+}
+
+.badge {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-done);
 }
 
 .week-title {
