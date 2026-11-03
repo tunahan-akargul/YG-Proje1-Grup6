@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import weeksData from '@/data/weeks.json'
-import tasksData from '@/data/tasks.json'
-import type { Task, Week } from '@/types'
+import type { Week } from '@/types'
 import { useStorage } from '@/composables/useStorage'
+import { useTasks } from '@/composables/useTasks'
 import WeekRoadmap from '@/components/WeekRoadmap.vue'
 import WeekDetail from '@/components/WeekDetail.vue'
+import TaskPanel from '@/components/TaskPanel.vue'
 
 const weeks: Week[] = weeksData
-const tasks: Task[] = tasksData
+const { tasks } = useTasks()
 
 // Seçili hafta hatırlanır; sayfa yenilenince aynı hafta açık kalır.
 const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
@@ -16,10 +17,6 @@ const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
 // Kayıtlı hafta artık veride yoksa (ör. JSON değişti) ilk haftaya düşülür.
 const selectedWeek = computed(
   () => weeks.find((week) => week.id === selectedWeekId.value) ?? weeks[0],
-)
-
-const selectedWeekTasks = computed(() =>
-  tasks.filter((task) => task.weekId === selectedWeek.value?.id),
 )
 </script>
 
@@ -39,7 +36,10 @@ const selectedWeekTasks = computed(() =>
       @select="selectedWeekId = $event"
     />
 
-    <WeekDetail v-if="selectedWeek" :week="selectedWeek" :tasks="selectedWeekTasks" />
+    <div v-if="selectedWeek" class="week-layout">
+      <WeekDetail :week="selectedWeek" />
+      <TaskPanel :weeks="weeks" :week-id="selectedWeek.id" />
+    </div>
   </main>
 </template>
 
@@ -58,5 +58,20 @@ const selectedWeekTasks = computed(() =>
 
 main {
   padding-bottom: var(--space-8);
+}
+
+/* Masaüstünde hafta detayı solda, görevler sağda; dar ekranda alt alta. */
+.week-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: var(--space-6);
+  align-items: start;
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .week-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 </style>

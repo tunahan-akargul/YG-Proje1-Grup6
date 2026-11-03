@@ -4,6 +4,7 @@
   Böylece tema değişince bütün sayfa birlikte değişir.
 */
 :root {
+  color-scheme: light;
   --color-bg: #f6f7fb;
   --color-surface: #ffffff;
   --color-text: #1c1f2a;
@@ -14,6 +15,7 @@
   --color-todo: #6b7280;
   --color-progress: #b45309;
   --color-done: #15803d;
+  --color-danger: #b91c1c;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -29,6 +31,7 @@
 
 /* Karanlık tema: <html data-theme="dark"> olduğunda devreye girer. */
 :root[data-theme='dark'] {
+  color-scheme: dark;
   --color-bg: #12141c;
   --color-surface: #1c1f2a;
   --color-text: #eceef4;
@@ -39,5 +42,6 @@
   --color-todo: #9ca3af;
   --color-progress: #f59e0b;
   --color-done: #4ade80;
+  --color-danger: #f87171;
   --shadow: none;
 }

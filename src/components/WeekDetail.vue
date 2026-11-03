@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import type { Task, Week } from '@/types'
+import type { Week } from '@/types'
 
 defineProps<{
   week: Week
-  tasks: Task[]
 }>()
 </script>
 
@@ -17,19 +16,11 @@ defineProps<{
     <ul class="goals">
       <li v-for="goal in week.goals" :key="goal">{{ goal }}</li>
     </ul>
-
-    <h3>Görevler</h3>
-    <!-- Geçici liste: 3. adımda yerini durum değiştirilebilen görev listesi alacak. -->
-    <ul v-if="tasks.length > 0" class="tasks">
-      <li v-for="task in tasks" :key="task.id">{{ task.title }}</li>
-    </ul>
-    <p v-else class="empty">Bu hafta için görev yok.</p>
   </section>
 </template>
 
 <style scoped>
 .week-detail {
-  margin-top: var(--space-6);
   padding: var(--space-6);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -54,13 +45,9 @@ h3 {
   margin-top: var(--space-6);
 }
 
-.goals,
-.tasks {
+.goals {
   padding-left: var(--space-6);
-}
-
-.empty {
-  color: var(--color-text-muted);
+  margin-bottom: 0;
 }
 
 @media (max-width: 600px) {
