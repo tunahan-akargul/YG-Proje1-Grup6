@@ -1,0 +1,35 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Klavyeyle gezinirken odaklanılan öğe net görünsün (erişilebilirlik). */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Sayfanın ortalanmış içerik alanı; telefonda 16px kenar boşluğu bırakır. */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}

@@ -1,0 +1,43 @@
+/*
+  Tasarım değişkenleri (renk, boşluk, köşe).
+  Bileşenlerde renk doğrudan yazılmaz; hep bu değişkenler kullanılır.
+  Böylece tema değişince bütün sayfa birlikte değişir.
+*/
+:root {
+  --color-bg: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-text: #1c1f2a;
+  --color-text-muted: #5b6275;
+  --color-border: #dfe2ea;
+  --color-primary: #4f46e5;
+  --color-primary-text: #ffffff;
+  --color-todo: #6b7280;
+  --color-progress: #b45309;
+  --color-done: #15803d;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius: 12px;
+  --shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Karanlık tema: <html data-theme="dark"> olduğunda devreye girer. */
+:root[data-theme='dark'] {
+  --color-bg: #12141c;
+  --color-surface: #1c1f2a;
+  --color-text: #eceef4;
+  --color-text-muted: #a3a9b8;
+  --color-border: #2e3242;
+  --color-primary: #8b85ff;
+  --color-primary-text: #12141c;
+  --color-todo: #9ca3af;
+  --color-progress: #f59e0b;
+  --color-done: #4ade80;
+  --shadow: none;
+}

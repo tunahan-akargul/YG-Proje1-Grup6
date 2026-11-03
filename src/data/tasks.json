@@ -1,0 +1,32 @@
+[
+  {
+    "id": "t1",
+    "weekId": 1,
+    "title": "Tarayıcı geliştirici araçlarını keşfet",
+    "description": "Herhangi bir sitede Network sekmesini açıp sayfanın hangi dosyaları indirdiğini incele.",
+    "tag": "Keşif"
+  },
+  {
+    "id": "t2",
+    "weekId": 1,
+    "title": "Kişisel tanıtım sayfası yaz",
+    "description": "header, main ve footer etiketlerini kullanarak kendini tanıtan bir HTML sayfası hazırla.",
+    "tag": "Uygulama",
+    "dueDate": "2026-11-10"
+  },
+  {
+    "id": "t3",
+    "weekId": 2,
+    "title": "Kutu modeli alıştırması",
+    "description": "Üç kutuyu farklı margin ve padding değerleriyle yan yana diz, farkı not al.",
+    "tag": "Alıştırma"
+  },
+  {
+    "id": "t4",
+    "weekId": 2,
+    "title": "Renk paleti oluştur",
+    "description": "Tanıtım sayfan için en az 4 renkten oluşan bir paleti CSS değişkenleriyle tanımla.",
+    "tag": "Uygulama",
+    "dueDate": "2026-11-17"
+  }
+]
