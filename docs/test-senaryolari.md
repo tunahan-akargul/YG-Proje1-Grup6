@@ -1,0 +1,26 @@
+# Test Senaryoları ve Hata Raporları
+
+**Proje:** Etkileşimli Ders Deneyimi Panosu (YG-Proje1-Grup6)  
+**Test Sorumlusu:** Leyla (Test / Kalite)  
+**Test Tarihi:** 3 Kasım 2026  
+**Test Ortamları:**
+* **Masaüstü:** Chrome / Firefox (masaüstü çözünürlüğü)
+* **Mobil:** Safari (iOS) / Chrome (Android)
+
+---
+
+## 1. Test Senaryoları ve Sonuçları Tablosu
+
+| ID | Modül / Özellik | Test Adımları | Beklenen Sonuç | Gerçek Sonuç (Masaüstü) | Gerçek Sonuç (Mobil) | Durum |
+| :--- | :--- | :--- | :--- | :--- | :--- | :---: |
+| **TS-01** | Hafta Seçimi | 1. Yol haritasından 2. haftaya tıkla.<br>2. Hafta detaylarını ve görev listesini incele. | Seçili hafta 2 olarak güncellenmeli; hedefler ve görev listesi 2. haftaya ait verileri göstermeli. | 2. hafta kartı aktifleşti; sol panelde hedefler, sağda 2. haftaya ait 2 görev anında listelendi. | Dokunmatik seçim sorunsuz çalıştı; dikey akışta hedefler ve görevler 2. haftaya güncellendi. | ✅ Geçti |
+| **TS-02** | Görev Durumu Güncelleme | 1. 1. haftadaki ilk görevin (t1) durumunu "Tamamlandı" yap.<br>2. İlerleme halkasını ve 1. hafta çubuğunu kontrol et. | Görev başlığı üzeri çizilmeli; genel ilerleme halkası %25'e (1/4), 1. hafta ilerleme çubuğu %50'ye (1/2) yükselmeli. | Durum "Tamamlandı" seçildiğinde başlık çizildi; genel halka %25'e (1/4), 1. hafta barı %50'ye (1/2) yükseldi. | Mobil dropdown seçimi sonrası ilerleme halkası animasyonla güncellendi, metin senkron kaldı. | ✅ Geçti |
+| **TS-03** | Yeni Görev Ekleme | 1. "+ Görev ekle" butonuna tıkla.<br>2. Başlık, hafta ve teslim tarihi girip kaydet. | Yeni görev listeye eklenmeli, "Kendi görevim" rozeti almalı; toplam görev sayısı ve oranlar güncellenmeli. | Form açıldı ve girilen görev başarıyla eklendi; toplam görev 5 oldu, sayaçlar doğru güncellendi. | Mobil klavyeyle form dolduruldu ve kaydedildi; listeye başarıyla eklendi. | ✅ Geçti |
+| **TS-04** | Form Doğrulama (Validasyon) | 1. "+ Görev ekle" formunda başlığı boş bırak.<br>2. Kaydet'e tıkla. | Boş görev gönderilmemeli; kullanıcıya zorunlu alan uyarısı gösterilmeli. | `validateTask()` fonksiyonu "Başlık boş bırakılamaz." hatası verdi; form `novalidate` olduğundan doğrulama tamamen JS tarafında yapılıyor, odak hatalı alana yönlendi. | Mobil tarayıcıda JS doğrulaması devreye girdi, form gönderimi engellendi ve odak boş alana yönlendi. | ✅ Geçti |
+| **TS-05** | Görev Düzenleme ve Silme | 1. Eklenen görevin "Düzenle" butonuna basıp başlığı değiştir.<br>2. "Sil" butonuna basıp onayla. | Düzenleme kaydedilmeli; silindiğinde listeden ve hafızadan tamamen kaldırılmalı. | Düzenleme başarıyla yansıdı; sil butonuna basıldığında onay alındı ve görev silindi. | Dokunmatik butonlar çalıştı; tarayıcı onay kutusu sonrası görev listeden kaldırıldı. | ✅ Geçti |
+| **TS-06** | Türkçe Karakter Arama | 1. Arama kutusuna "keşfet", "GİRİŞ", "kutu" yaz.<br>2. Sonuçları kontrol et. | Büyük/küçük harf ve Türkçe karakter (`ç`, `ğ`, `ı`, `ö`, `ş`, `ü`, `İ`) duyarlı arama yapmalı. | `toLocaleLowerCase('tr-TR')` mantığı sayesinde Türkçe karakterler ve büyük/küçük harf doğru eşleşti. | Mobil klavyeden Türkçe karakterlerle arama yapıldığında liste anlık ve hatasız süzüldü. | ✅ Geçti |
+| **TS-07** | Durum ve Hafta Filtresi | 1. "Devam ediyor" durum filtresini seç.<br>2. Hafta filtresinden "Tüm haftalar" seç. | Yalnızca belirtilen filtreye uyan görevler listelenmeli, sayaçlar ve boş liste mesajı doğru olmalı. | Boş durum için "Seçtiğin filtreye veya aramaya uyan görev yok" ve "Filtreleri temizle" butonu düzgün çıktı. | Filtre radyo butonları çalıştı; filtre temizleme butonu başarıyla listeyi sıfırladı. | ✅ Geçti |
+| **TS-08** | Karanlık / Aydınlık Tema | 1. Sağ üstteki tema butonuna bas.<br>2. Sayfa kontrastını ve renk geçişini incele. | Renkler yumuşak bir geçişle değişmeli; metin okunabilirliği ve kontrast WCAG AA düzeyinde kalmalı. | `data-theme="dark"` sınıfı aktifleşti; kart arkaplanları, yazılar ve odak çizgileri belirgin kaldı. | Mobil ekranda tema butonu kolay erişilebilir; renk geçişi takılma olmadan uygulandı. | ✅ Geçti |
+| **TS-09** | Veri Kalıcılığı (localStorage) | 1. Görev durumunu değiştir veya görev ekle.<br>2. Temayı karanlık yap.<br>3. Sayfayı yenile (F5 / Refresh). | Sayfa yenilendiğinde görev durumları, eklenen görevler, seçili hafta ve tema aynen korunmalı. | Sayfa yenilendiğinde `localStorage` üzerinden son durum eksiksiz geri yüklendi. | Mobil sekme yenilendiğinde ve tarayıcı kapatılıp açıldığında tercihler korundu. | ✅ Geçti |
+| **TS-10** | Mobil Responsive ve Taşma | 1. Mobil ekranda dikey ve yatay kaydırma yap.<br>2. Buton ve dokunma alanlarını dene. | Ekran tek sütuna inmeli; yatay taşma olmamalı; butonlar parmakla rahat basılabilmeli. | N/A (Masaüstü iki sütunlu düzen hatasız çalıştı). | Tek sütunlu düzene başarıyla geçti; ancak dar ekranlarda (≤375px) filtre radyo butonları çok sıkışıyor. | ⚠️ İyileştirme (P1-10) |
+| **TS-11** | Silme İşlemi Kullanıcı Deneyimi | 1. Görev sil butonuna tıkla.<br>2. Onay penceresi davranışını test et. | Kullanıcıya modern ve erişilebilir bir onay kutusu sunulmalı. | Standart tarayıcı `window.confirm` popup'ı açıldı; işlevsel ama modern UI ile uyumsuz. | Mobilde standart `window.confirm` popup'ı tam ekranı bloke ediyor ve tema uyumu yok. | ⚠️ İyileştirme (P1-15) |
