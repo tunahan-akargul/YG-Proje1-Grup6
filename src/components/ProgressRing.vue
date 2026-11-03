@@ -29,7 +29,9 @@ const dashOffset = computed(() => circumference.value * (1 - props.percent / 100
   >
     <svg :width="size" :height="size" :viewBox="`0 0 ${size} ${size}`" aria-hidden="true">
       <circle class="track" :cx="size / 2" :cy="size / 2" :r="radius" :stroke-width="STROKE" />
+      <!-- %0'da çizilmez; yoksa yuvarlak uç küçük bir nokta bırakır. -->
       <circle
+        v-if="percent > 0"
         class="fill"
         :cx="size / 2"
         :cy="size / 2"
