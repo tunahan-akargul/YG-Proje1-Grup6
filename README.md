@@ -1,120 +1,170 @@
-Etkileşimli Ders Deneyimi Panosu
+# Etkileşimli Ders Deneyimi Panosu
 
-Yazılım Geliştirme dersi — Proje 1 • Grup X
+**Yazılım Geliştirme dersi — Proje 1 • Grup 6**
 
 Öğrencilerin bir dersin haftalık akışını, öğrenme hedeflerini ve görevlerini tek ekranda görebildiği, görevleri tamamladıkça ilerlemesini görsel olarak takip edebildiği, mobilde de rahat kullanılan bir web panosu.
 
-Durum: Hafta 1 tamamlandı (analiz, planlama, repository ve proje iskeleti). Geliştirme sürüyor.
+> **Durum:** Hafta 2 tamamlandı. Zorunlu özelliklerin hepsi çalışıyor; Hafta 3'te test kayıtları, örnek verinin tamamlanması ve hata düzeltmeleri yapılacak.
 
-İçindekiler
-Proje amacı
-Ekip ve roller
-Kullanılan teknolojiler
-Temel özellikler
-Kurulum
-Çalıştırma
-Proje yapısı
-Çalışma düzeni
-Demo ve ekran görüntüleri
-Proje takvimi
-Bilinen eksikler
-Proje amacı
+![Masaüstü görünüm](docs/ekran-goruntuleri/masaustu-aydinlik.png)
+
+## İçindekiler
+
+- [Proje amacı](#proje-amacı)
+- [Ekip ve roller](#ekip-ve-roller)
+- [Kullanılan teknolojiler](#kullanılan-teknolojiler)
+- [Temel özellikler](#temel-özellikler)
+- [Kurulum](#kurulum)
+- [Çalıştırma](#çalıştırma)
+- [Kullanım](#kullanım)
+- [Proje yapısı](#proje-yapısı)
+- [Çalışma düzeni](#çalışma-düzeni)
+- [Demo ve ekran görüntüleri](#demo-ve-ekran-görüntüleri)
+- [Proje takvimi](#proje-takvimi)
+- [Bilinen eksikler](#bilinen-eksikler)
+
+## Proje amacı
 
 Öğrenciler ders içeriğini, görevlerini ve kendi ilerlemelerini genellikle farklı yerlerden takip ediyor. Bu pano; haftalık yol haritasını, her haftanın hedeflerini ve görevlerini bir arada gösterir, görev durumlarını değiştirmeye izin verir ve genel ilerlemeyi anında günceller.
 
-Projenin odağı istemci tarafı web geliştirme, kullanılabilirlik ve etkileşim tasarımıdır. Backend ve veri tabanı yoktur. İçerik statik JSON dosyalarından okunur, kullanıcının ilerlemesi ve tercihleri tarayıcının localStorage alanında tutulur.
+Projenin odağı istemci tarafı web geliştirme, kullanılabilirlik ve etkileşim tasarımıdır. **Backend ve veri tabanı yoktur.** İçerik statik JSON dosyalarından okunur; öğrencinin ilerlemesi ve tercihleri tarayıcının `localStorage` alanında tutulur.
 
-Panoda gösterilen ders (Web Teknolojilerine Giriş) kurgusal bir örnek derstir: 8 hafta, 20 görev.
+Panoda gösterilen ders (*Web Teknolojilerine Giriş*) kurgusal bir örnek derstir.
 
-Ekip ve roller
+## Ekip ve roller
 
 Tüm üyeler aynı zamanda geliştiricidir.
 
-Üye	Rol	GitHub
-	Lider + Geliştirici	@
-	Analist / Gereksinim + Geliştirici	@
-	Test / Kalite + Geliştirici	@
-	Dokümantasyon / Sunum + Geliştirici	@
-Kullanılan teknolojiler
-Vue (sürüm: doldurulacak) — arayüz
-JavaScript, HTML, CSS (CSS değişkenleriyle tema)
-localStorage — ilerleme ve kullanıcı tercihleri
-Statik JSON — hafta ve görev içeriği
-Git / GitHub — sürüm kontrolü, issue ve proje panosu
-Temel özellikler
+| Üye | Rol | GitHub |
+|---|---|---|
+| Çağrı Aydemir | Lider + Geliştirici | *(eklenecek)* |
+| Caner Görez | Analist / Gereksinim + Geliştirici | *(eklenecek)* |
+| Kamil Kurt | Test / Kalite + Geliştirici | *(eklenecek)* |
+| Tunahan Akargül | Dokümantasyon / Sunum + Geliştirici | [@tunahan-akargul](https://github.com/tunahan-akargul) |
 
-Planlanan özellikler ve durumları (ilerledikçe işaretlenir):
+## Kullanılan teknolojiler
 
- Haftalık ders kartları ve yol haritası
- Hafta detayı: öğrenme hedefleri ve görevler
- Görev durumu değiştirme (yapılacak / devam ediyor / tamamlandı)
- Durum ve haftaya göre filtreleme
- Anahtar sözcükle arama
- Genel ve hafta bazlı ilerleme göstergesi
- Karanlık / aydınlık tema
- Sayfa yenilense de durumun korunması (localStorage)
- Responsive tasarım (mobil, tablet, masaüstü)
- Temel erişilebilirlik (klavye, etiketler, kontrast)
-Kurulum
+| Teknoloji | Kullanım amacı |
+|---|---|
+| [Vue 3](https://vuejs.org/) + TypeScript | Arayüz ve bileşenler |
+| [Vite](https://vite.dev/) | Geliştirme sunucusu ve derleme |
+| HTML, CSS (CSS değişkenleri) | Düzen, responsive tasarım ve tema |
+| Statik JSON | Hafta ve görev içeriği |
+| localStorage | Görev durumları ve kullanıcı tercihleri |
+| Git / GitHub | Sürüm kontrolü, issue ve pull request |
 
-Gereksinimler: Node.js (LTS sürüm) ve Git.
+Harici bir UI kütüphanesi kullanılmamıştır; tasarım kararları ekip tarafından verilmiştir.
 
-bash
+## Temel özellikler
+
+- [x] Haftalık ders kartları ve yol haritası
+- [x] Hafta detayı: açıklama, öğrenme hedefleri ve haftalık ilerleme
+- [x] Görev durumu değiştirme (yapılacak / devam ediyor / tamamlandı)
+- [x] Öğrencinin kendi görevini ekleyip düzenleyebilmesi (form doğrulamalı)
+- [x] Duruma ve haftaya göre filtreleme
+- [x] Anahtar sözcükle arama (Türkçe karakter uyumlu)
+- [x] Genel ilerleme halkası ve hafta bazlı ilerleme çubukları
+- [x] Karanlık / aydınlık tema
+- [x] Sayfa yenilense de durumun korunması (localStorage)
+- [x] Responsive tasarım (mobil, tablet, masaüstü)
+- [ ] Temel erişilebilirlik: yapı hazır, klavye ve kontrast kontrolü Hafta 3'te
+
+## Kurulum
+
+**Gereksinimler:** [Node.js](https://nodejs.org/) 22.18 veya üzeri (ya da 24.12+) ve Git.
+
+```bash
 # 1. Depoyu klonla
-git clone <repo-adresi>
+git clone https://github.com/tunahan-akargul/YG-Proje1-Grup6.git
 
 # 2. Proje klasörüne gir
-cd YG-Proje1-GrupX
+cd YG-Proje1-Grup6
 
 # 3. Bağımlılıkları yükle
 npm install
-Çalıştırma
-bash
+```
+
+## Çalıştırma
+
+```bash
 # Geliştirme sunucusunu başlat
 npm run dev
+```
 
-Terminalde yazan adresi (genellikle http://localhost:5173) tarayıcıda aç.
+Terminalde yazan adresi (genellikle <http://localhost:5173>) tarayıcıda aç.
 
-bash
-# Üretim derlemesi (isteğe bağlı)
+```bash
+# Üretim derlemesi (tip kontrolü + derleme, çıktı dist/ klasörüne)
 npm run build
 
-Komutlar projenin gerçek kurulumuna göre güncellenmelidir.
+# Derlenmiş sürümü yerelde önizle
+npm run preview
+```
 
-Proje yapısı
-text
-YG-Proje1-GrupX/
+## Kullanım
+
+1. **Genel ilerleme:** Sayfanın üstündeki halka, bütün görevlerin yüzde kaçının tamamlandığını gösterir.
+2. **Hafta seçimi:** *Haftalık yol haritası*ndaki bir karta tıkla. O haftanın açıklaması, hedefleri ve görevleri açılır.
+3. **Görev durumu:** Görevin sağındaki listeden *Yapılacak*, *Devam ediyor* veya *Tamamlandı* seç. İlerleme göstergeleri anında güncellenir.
+4. **Arama ve filtre:** *Görev ara* kutusuna yaz, durum düğmelerinden birini seç ya da *Hafta* listesinden *Tüm haftalar*ı seç.
+5. **Kendi görevin:** *+ Görev ekle* ile yeni görev oluştur. Kendi eklediğin görevleri *Düzenle* ve *Sil* düğmeleriyle yönetebilirsin.
+6. **Tema:** Sağ üstteki düğmeyle karanlık ve aydınlık tema arasında geçiş yap.
+
+Bütün seçimler tarayıcıda saklanır; sayfa yenilense de korunur.
+
+## Proje yapısı
+
+```text
+YG-Proje1-Grup6/
 ├─ README.md
+├─ index.html
 ├─ src/
-│  ├─ assets/          # görseller, ikonlar
-│  ├─ components/      # arayüz bileşenleri
-│  ├─ composables/     # ortak mantık (görevler, ilerleme, tema, localStorage)
-│  ├─ data/            # weeks.json, tasks.json
-│  ├─ styles/          # tasarım tokenları ve temel stiller
+│  ├─ components/      # arayüz bileşenleri (WeekCard, TaskPanel, ProgressRing, ...)
+│  ├─ composables/     # ortak mantık: useTasks, useFilters, useProgress, useTheme, useStorage
+│  ├─ data/            # weeks.json, tasks.json (ders içeriği)
+│  ├─ styles/          # tokens.css (renk/boşluk değişkenleri), base.css
+│  ├─ types.ts         # veri modeli (Week, Task, TaskStatus)
 │  ├─ App.vue
-│  └─ main.js
-├─ docs/               # hafta 1 dokümanı, rapor, kullanıcı dokümanı
-└─ presentation/       # sunum dosyası
-Çalışma düzeni
-Her üye kendi GitHub hesabıyla çalışır; görevler issue olarak açılır ve kişilere atanır.
-main dalı her zaman çalışır durumda tutulur. Değişiklikler feature/..., fix/... veya docs/... dallarında yapılır ve pull request ile birleştirilir.
-Commit mesajları yapılan değişikliği açıklar: add week card component, fix search for Turkish characters, update readme with setup steps.
-Gizli bilgi (anahtar, parola) repoya yazılmaz.
+│  └─ main.ts
+└─ docs/
+   ├─ Hafta1_Rapor.docx
+   ├─ Hafta2_Rapor.docx
+   ├─ ekran-goruntuleri/
+   └─ presentation/    # sunum dosyası
+```
 
-Ayrıntılar için: docs/ klasöründeki Hafta 1 dokümanı.
+**Mantık ve görünüm ayrıdır:** `composables/` uygulamanın mantığını (durumlar, filtreleme, ilerleme hesabı, kalıcılık), `components/` ekranda görünen parçaları içerir.
 
-Demo ve ekran görüntüleri
-Canlı demo: henüz yok — yayınlanınca bağlantı eklenecek
-Ekran görüntüleri: geliştirme ilerledikçe docs/ekran-goruntuleri/ altına eklenecek
-Proje takvimi
-Hafta	Odak	Durum
-1	İhtiyaç analizi, kullanıcı hikâyeleri, repository, görev planı	✅ Tamamlandı
-2	Arayüz/teknik tasarım, temel yapı, ilk işlevler	⏳ Sırada
-3	Ana işlevlerin tamamlanması, entegrasyon, test	⬜
-4	Kalite kontrol, dokümantasyon, sunum ve demo	⬜
-Bilinen eksikler
-Uygulama özellikleri henüz geliştirme aşamasında (bkz. Temel özellikler).
-Canlı demo bağlantısı ve ekran görüntüleri henüz eklenmedi.
-Erişilebilirlik ve responsive kontrolleri Hafta 3'te yapılacak.
+## Çalışma düzeni
 
-Bu bölüm proje ilerledikçe güncellenir.
+- Her üye kendi GitHub hesabıyla çalışır; görevler issue olarak açılır ve kişilere atanır.
+- `main` dalı her zaman çalışır durumda tutulur. Değişiklikler `feature/...`, `fix/...` veya `docs/...` dallarında yapılır ve pull request ile birleştirilir.
+- Commit mesajları yapılan değişikliği açıklar: `add week card component`, `fix search for Turkish characters`, `update readme with setup steps`.
+- Gizli bilgi (anahtar, parola) repoya yazılmaz.
+
+Ayrıntılar için [`docs/`](docs/) klasöründeki haftalık raporlara bakabilirsiniz.
+
+## Demo ve ekran görüntüleri
+
+**Canlı demo:** henüz yok. Uygulama [Kurulum](#kurulum) adımlarıyla yerelde çalıştırılabilir.
+
+| Mobil — aydınlık | Mobil — karanlık |
+|---|---|
+| ![Mobil aydınlık](docs/ekran-goruntuleri/mobil-aydinlik.png) | ![Mobil karanlık](docs/ekran-goruntuleri/mobil-karanlik.png) |
+
+Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs/ekran-goruntuleri/masaustu-karanlik.png)
+
+## Proje takvimi
+
+| Hafta | Odak | Durum |
+|---|---|---|
+| 1 | İhtiyaç analizi, kullanıcı hikâyeleri, repository, görev planı | ✅ Tamamlandı |
+| 2 | Arayüz/teknik tasarım, temel yapı ve ana işlevler | ✅ Tamamlandı |
+| 3 | Entegrasyon, test kayıtları, hata düzeltme, örnek verinin tamamlanması | ⏳ Devam ediyor (geliştirme işleri öne çekildi) |
+| 4 | Kalite kontrol, kullanıcı dokümanı, rapor, sunum ve demo | ⬜ |
+
+## Bilinen eksikler
+
+- Örnek ders verisi şimdilik 2 hafta / 4 görevden oluşuyor; 8 hafta / 20 göreve tamamlanacak.
+- Klavyeyle tam gezinme ve renk kontrastı henüz elle kontrol edilmedi.
+- Canlı demo bağlantısı yok.
