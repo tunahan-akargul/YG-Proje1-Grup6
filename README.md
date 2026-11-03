@@ -4,7 +4,7 @@
 
 Öğrencilerin bir dersin haftalık akışını, öğrenme hedeflerini ve görevlerini tek ekranda görebildiği, görevleri tamamladıkça ilerlemesini görsel olarak takip edebildiği, mobilde de rahat kullanılan bir web panosu.
 
-> **Durum:** Hafta 2 tamamlandı. Zorunlu özelliklerin hepsi çalışıyor; Hafta 3'te test kayıtları, örnek verinin tamamlanması ve hata düzeltmeleri yapılacak.
+> **Durum:** Hafta 3 geliştirme ve kontrolleri tamamlandı. Zorunlu özelliklerin hepsi çalışıyor; kontrast ve klavye kontrolleri yapıldı. Örnek verinin tamamlanması ve test kayıtları sürüyor.
 
 ![Masaüstü görünüm](docs/ekran-goruntuleri/masaustu-aydinlik.png)
 
@@ -49,6 +49,7 @@ Tüm üyeler aynı zamanda geliştiricidir.
 | [Vue 3](https://vuejs.org/) + TypeScript | Arayüz ve bileşenler |
 | [Vite](https://vite.dev/) | Geliştirme sunucusu ve derleme |
 | HTML, CSS (CSS değişkenleri) | Düzen, responsive tasarım ve tema |
+| [Plus Jakarta Sans](https://fontsource.org/fonts/plus-jakarta-sans) | Yazı tipi (pakete dahil, internetsiz de çalışır; Türkçe karakter destekli) |
 | Statik JSON | Hafta ve görev içeriği |
 | localStorage | Görev durumları ve kullanıcı tercihleri |
 | Git / GitHub | Sürüm kontrolü, issue ve pull request |
@@ -67,7 +68,7 @@ Harici bir UI kütüphanesi kullanılmamıştır; tasarım kararları ekip taraf
 - [x] Karanlık / aydınlık tema
 - [x] Sayfa yenilense de durumun korunması (localStorage)
 - [x] Responsive tasarım (mobil, tablet, masaüstü)
-- [ ] Temel erişilebilirlik: yapı hazır, klavye ve kontrast kontrolü Hafta 3'te
+- [x] Temel erişilebilirlik: klavyeyle kullanım, form etiketleri, WCAG AA kontrast (iki temada da ölçüldü)
 
 ## Kurulum
 
@@ -129,6 +130,7 @@ YG-Proje1-Grup6/
 └─ docs/
    ├─ Hafta1_Rapor.docx
    ├─ Hafta2_Rapor.docx
+   ├─ Hafta3_Rapor.docx
    ├─ ekran-goruntuleri/
    └─ presentation/    # sunum dosyası
 ```
@@ -160,11 +162,11 @@ Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs
 |---|---|---|
 | 1 | İhtiyaç analizi, kullanıcı hikâyeleri, repository, görev planı | ✅ Tamamlandı |
 | 2 | Arayüz/teknik tasarım, temel yapı ve ana işlevler | ✅ Tamamlandı |
-| 3 | Entegrasyon, test kayıtları, hata düzeltme, örnek verinin tamamlanması | ⏳ Devam ediyor (geliştirme işleri öne çekildi) |
+| 3 | Entegrasyon, erişilebilirlik ve test, hata düzeltme, görsel tasarım | ⏳ Geliştirme ve kontroller bitti; örnek veri ve test kayıtları sürüyor |
 | 4 | Kalite kontrol, kullanıcı dokümanı, rapor, sunum ve demo | ⬜ |
 
 ## Bilinen eksikler
 
 - Örnek ders verisi şimdilik 2 hafta / 4 görevden oluşuyor; 8 hafta / 20 göreve tamamlanacak.
-- Klavyeyle tam gezinme ve renk kontrastı henüz elle kontrol edilmedi.
+- Test senaryoları tablosu ve hata kayıtları henüz GitHub issue olarak girilmedi.
 - Canlı demo bağlantısı yok.
