@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import weeksData from '@/data/weeks.json'
 import type { Week } from '@/types'
 import { useStorage } from '@/composables/useStorage'
 import { useTasks } from '@/composables/useTasks'
+import { useFilters } from '@/composables/useFilters'
 import WeekRoadmap from '@/components/WeekRoadmap.vue'
 import WeekDetail from '@/components/WeekDetail.vue'
 import TaskPanel from '@/components/TaskPanel.vue'
 
 const weeks: Week[] = weeksData
 const { tasks } = useTasks()
+const { filters } = useFilters()
 
 // Seçili hafta hatırlanır; sayfa yenilenince aynı hafta açık kalır.
 const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
@@ -17,6 +19,20 @@ const selectedWeekId = useStorage<number>('selectedWeek', weeks[0]?.id ?? 1)
 // Kayıtlı hafta artık veride yoksa (ör. JSON değişti) ilk haftaya düşülür.
 const selectedWeek = computed(
   () => weeks.find((week) => week.id === selectedWeekId.value) ?? weeks[0],
+)
+
+// Karttan hafta seçmek görev listesini de o haftaya süzer.
+function selectWeek(weekId: number) {
+  selectedWeekId.value = weekId
+  filters.value.week = weekId
+}
+
+// Görev listesindeki hafta filtresi değişirse soldaki hafta detayı da onu izler.
+watch(
+  () => filters.value.week,
+  (week) => {
+    if (week !== 'all') selectedWeekId.value = week
+  },
 )
 </script>
 
@@ -33,12 +49,12 @@ const selectedWeek = computed(
       :weeks="weeks"
       :tasks="tasks"
       :selected-id="selectedWeek?.id ?? 0"
-      @select="selectedWeekId = $event"
+      @select="selectWeek"
     />
 
     <div v-if="selectedWeek" class="week-layout">
       <WeekDetail :week="selectedWeek" />
-      <TaskPanel :weeks="weeks" :week-id="selectedWeek.id" />
+      <TaskPanel :weeks="weeks" :default-week-id="selectedWeek.id" />
     </div>
   </main>
 </template>

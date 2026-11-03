@@ -1,18 +1,44 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { Task, TaskInput, Week } from '@/types'
+import { TASK_STATUSES, type Task, type TaskInput, type Week } from '@/types'
 import { toTaskInput, useTasks } from '@/composables/useTasks'
+import { filterTasks, useFilters, type StatusFilter } from '@/composables/useFilters'
+import FilterBar from './FilterBar.vue'
 import TaskItem from './TaskItem.vue'
 import TaskForm from './TaskForm.vue'
 
 const props = defineProps<{
   weeks: Week[]
-  weekId: number
+  /** Yeni görev formunda önceden seçili gelecek hafta. */
+  defaultWeekId: number
 }>()
 
 const { tasks, statusOf, setStatus, addTask, updateTask, removeTask } = useTasks()
+const { filters, search, resetFilters } = useFilters()
 
-const visibleTasks = computed(() => tasks.value.filter((task) => task.weekId === props.weekId))
+// Durum filtresi uygulanmadan önceki liste: sayaçlar bunun üzerinden hesaplanır.
+const tasksInScope = computed(() =>
+  filterTasks(tasks.value, statusOf, { status: 'all', week: filters.value.week, search: search.value }),
+)
+
+const visibleTasks = computed(() =>
+  filterTasks(tasksInScope.value, statusOf, { status: filters.value.status, week: 'all', search: '' }),
+)
+
+const counts = computed(() => {
+  const result = { all: tasksInScope.value.length } as Record<StatusFilter, number>
+  for (const status of TASK_STATUSES) {
+    result[status] = tasksInScope.value.filter((task) => statusOf(task.id) === status).length
+  }
+  return result
+})
+
+const isFiltering = computed(() => filters.value.status !== 'all' || search.value.trim() !== '')
+const showWeekLabel = computed(() => filters.value.week === 'all')
+
+function weekLabel(weekId: number): string {
+  return `${weekId}. hafta`
+}
 
 const isAdding = ref(false)
 const editingId = ref<string | null>(null)
@@ -44,10 +70,15 @@ function onRemove(task: Task) {
     <TaskForm
       v-if="isAdding"
       :weeks="weeks"
-      :default-week-id="weekId"
+      :default-week-id="props.defaultWeekId"
       @save="onAdd"
       @cancel="isAdding = false"
     />
+
+    <FilterBar :weeks="weeks" :counts="counts" />
+
+    <!-- aria-live: liste değişince ekran okuyucu yeni sonucu duyurur. -->
+    <p class="result-count" aria-live="polite">{{ visibleTasks.length }} görev gösteriliyor</p>
 
     <ul v-if="visibleTasks.length > 0" class="task-list">
       <li v-for="task in visibleTasks" :key="task.id">
@@ -62,13 +93,21 @@ function onRemove(task: Task) {
           v-else
           :task="task"
           :status="statusOf(task.id)"
+          :week-label="showWeekLabel ? weekLabel(task.weekId) : undefined"
           @update:status="setStatus(task.id, $event)"
           @edit="editingId = task.id"
           @remove="onRemove(task)"
         />
       </li>
     </ul>
-    <p v-else class="empty">Bu hafta için görev yok.</p>
+
+    <div v-else class="empty">
+      <template v-if="isFiltering">
+        <p>Seçtiğin filtreye veya aramaya uyan görev yok.</p>
+        <button type="button" class="btn" @click="resetFilters">Filtreleri temizle</button>
+      </template>
+      <p v-else>Bu hafta için henüz görev yok. “Görev ekle” ile kendi görevini ekleyebilirsin.</p>
+    </div>
   </section>
 </template>
 
@@ -78,7 +117,6 @@ function onRemove(task: Task) {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: var(--space-3);
 }
 
 .panel-header h2 {
@@ -86,6 +124,16 @@ function onRemove(task: Task) {
 }
 
 .task-panel > * + * {
+  margin-top: var(--space-4);
+}
+
+.result-count {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.task-panel > .result-count {
   margin-top: var(--space-3);
 }
 
@@ -98,11 +146,23 @@ function onRemove(task: Task) {
   margin-bottom: 0;
 }
 
+.task-panel > .task-list {
+  margin-top: var(--space-2);
+}
+
 .empty {
   padding: var(--space-6);
   text-align: center;
   color: var(--color-text-muted);
   border: 2px dashed var(--color-border);
   border-radius: var(--radius);
+}
+
+.empty p {
+  margin: 0 0 var(--space-3);
+}
+
+.empty p:last-child {
+  margin-bottom: 0;
 }
 </style>
