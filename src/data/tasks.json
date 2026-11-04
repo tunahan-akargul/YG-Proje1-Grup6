@@ -28,5 +28,123 @@
     "description": "Tanıtım sayfan için en az 4 renkten oluşan bir paleti CSS değişkenleriyle tanımla.",
     "tag": "Uygulama",
     "dueDate": "2026-11-17"
+  },
+  {
+    "id": "t5",
+    "weekId": 3,
+    "title": "Flexbox ile gezinme menüsü kur",
+    "description": "Tanıtım sayfana bağlantılardan oluşan bir menü ekle. Flexbox ile hizala ve dar ekranda bağlantıların satıra geçmesini sağla.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t6",
+    "weekId": 3,
+    "title": "Grid ile kart düzeni oluştur",
+    "description": "En az dört içerik kartını Grid ile yerleştir. Masaüstünde çok sütunlu, mobilde tek sütunlu düzen oluştur.",
+    "tag": "Alıştırma"
+  },
+  {
+    "id": "t7",
+    "weekId": 3,
+    "title": "Mobil görünümü kontrol et",
+    "description": "Sayfanı 375, 768 ve 1280 piksel genişlikte incele. Yatay taşmaları gider ve hangi medya sorgularını kullandığını not al.",
+    "tag": "Kontrol",
+    "dueDate": "2026-11-24"
+  },
+  {
+    "id": "t8",
+    "weekId": 4,
+    "title": "Değişken ve koşul alıştırması yap",
+    "description": "Bir öğrencinin tamamladığı görev sayısını değişkende tut. Sayıya göre başlangıç, devam veya tamamlandı mesajı üreten koşullar yaz.",
+    "tag": "Alıştırma"
+  },
+  {
+    "id": "t9",
+    "weekId": 4,
+    "title": "Görev dizisini işle",
+    "description": "Başlık ve durum içeren en az beş görevden bir dizi oluştur. Döngü ya da dizi metotlarıyla yalnızca tamamlanan görevleri listele.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t10",
+    "weekId": 4,
+    "title": "İlerleme hesaplayan fonksiyon yaz",
+    "description": "Tamamlanan ve toplam görev sayılarını alan bir fonksiyon yaz. 1/20 için yüzde 5, 20/20 için yüzde 100, toplam 0 için yüzde 0 döndürdüğünü kontrol et.",
+    "tag": "Alıştırma",
+    "dueDate": "2026-12-01"
+  },
+  {
+    "id": "t11",
+    "weekId": 5,
+    "title": "DOM üzerinden içerik güncelle",
+    "description": "Bir başlık ve açıklama öğesi oluştur. DOM seçicileriyle bu öğeleri bulup metinlerini JavaScript ile değiştir.",
+    "tag": "Alıştırma"
+  },
+  {
+    "id": "t12",
+    "weekId": 5,
+    "title": "Düğmeye tıklayınca görev durumunu değiştir",
+    "description": "Bir görev kartına durum düğmesi ekle. Tıklama olayında tamamlanma durumunu değiştir ve bunu hem metin hem görsel stille belirt.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t13",
+    "weekId": 5,
+    "title": "Görev listesine arama ekle",
+    "description": "Bir arama alanı ekle ve yazıldıkça görev başlıklarını süz. Türkçe büyük/küçük harf dönüşümünü ve sonuç bulunamadığında gösterilecek mesajı kontrol et.",
+    "tag": "Uygulama",
+    "dueDate": "2026-12-08"
+  },
+  {
+    "id": "t14",
+    "weekId": 6,
+    "title": "Etiketli görev formu oluştur",
+    "description": "Başlık, açıklama ve hafta alanları olan bir form oluştur. Her alanı görünür bir label ile ilişkilendir ve formu yalnızca klavyeyle doldur.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t15",
+    "weekId": 6,
+    "title": "Form girdilerini doğrula",
+    "description": "Boş veya yalnızca boşluk içeren başlığı reddet. Alanın yanında anlaşılır bir hata göster; geçerli girişte görevi listeye ekle.",
+    "tag": "Alıştırma"
+  },
+  {
+    "id": "t16",
+    "weekId": 6,
+    "title": "Formun hata ve odak akışını dene",
+    "description": "Boş form gönderip odağın ilk hatalı alana taşındığını doğrula. Tab ile tüm alanlara eriş, girdiyi düzeltip yeniden gönder ve sonucu not al.",
+    "tag": "Kontrol",
+    "dueDate": "2026-12-15"
+  },
+  {
+    "id": "t17",
+    "weekId": 7,
+    "title": "JSON verisinden görevleri listele",
+    "description": "Hafta kimliği, başlık ve etiket içeren bir JSON görev listesi hazırla. Veriyi okuyarak görevleri ilgili haftalarıyla birlikte ekranda göster.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t18",
+    "weekId": 7,
+    "title": "Tema tercihini localStorage ile sakla",
+    "description": "Tema seçimini localStorage içine yaz ve sayfa açılırken geri yükle. Yenileme sonrası tercihin korunduğunu ve bozuk kayıtta varsayılan temanın açıldığını dene.",
+    "tag": "Uygulama",
+    "dueDate": "2026-12-22"
+  },
+  {
+    "id": "t19",
+    "weekId": 8,
+    "title": "Mini ders panosunu bütünleştir",
+    "description": "Hafta kartları, görev durumu, arama ve ilerleme göstergesini aynı sayfada birleştir. Bir görevi tamamlayıp göstergenin güncellendiğini ve yenilemede durumun korunduğunu doğrula.",
+    "tag": "Uygulama"
+  },
+  {
+    "id": "t20",
+    "weekId": 8,
+    "title": "Son kontrolleri yap ve demoyu hazırla",
+    "description": "Panoyu mobil ve masaüstünde dene; temel kontrolleri klavyeyle kullan. Hafta seçme, görev tamamlama ve yenileme akışını gösteren kısa bir demo ve kullanım notu hazırla.",
+    "tag": "Kontrol",
+    "dueDate": "2026-12-29"
   }
 ]

@@ -18,5 +18,65 @@
       "Kutu modelini (margin, padding, border) açıklamak",
       "CSS değişkenleriyle renk paleti tanımlamak"
     ]
+  },
+  {
+    "id": 3,
+    "title": "Responsive Sayfa Düzeni",
+    "description": "Flexbox, Grid ve medya sorgularıyla aynı içeriği farklı ekranlara uyarlıyoruz.",
+    "goals": [
+      "Flexbox ile tek boyutlu düzen kurmak",
+      "Grid ile kartları satır ve sütunlara yerleştirmek",
+      "Medya sorgularıyla mobil görünümü düzenlemek"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "JavaScript Temelleri",
+    "description": "Değişkenler, koşullar, diziler ve fonksiyonlarla küçük hesaplamalar yapıyoruz.",
+    "goals": [
+      "Değişken ve veri türlerini ayırt etmek",
+      "Koşul ve döngülerle dizi verisini işlemek",
+      "Tekrar kullanılabilir fonksiyon yazmak"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "DOM ve Kullanıcı Etkileşimi",
+    "description": "Sayfa öğelerine JavaScript ile erişip kullanıcı olaylarına göre arayüzü güncelliyoruz.",
+    "goals": [
+      "DOM öğelerini seçmek ve içeriklerini değiştirmek",
+      "Tıklama ve giriş olaylarını dinlemek",
+      "Arama sonucuna göre bir listeyi süzmek"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Formlar ve Doğrulama",
+    "description": "Etiketli form alanları, anlaşılır hata mesajları ve klavye desteğiyle veri girişi tasarlıyoruz.",
+    "goals": [
+      "Form alanlarını görünür etiketlerle ilişkilendirmek",
+      "Boş veya geçersiz girdileri doğrulamak",
+      "Hatalı alana odağı taşıyarak geri bildirim vermek"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "JSON ve Tarayıcıda Kalıcılık",
+    "description": "Yapılandırılmış veriyi okuyup kullanıcı tercihlerini tarayıcıda saklıyoruz.",
+    "goals": [
+      "JSON verisini okuyup listeye dönüştürmek",
+      "localStorage ile tercih kaydetmek ve geri yüklemek",
+      "Bozuk kayıtta güvenli varsayılan değer kullanmak"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Bütünleştirme ve Son Kontroller",
+    "description": "Öğrendiklerimizi küçük bir ders panosunda birleştirip kullanıcı senaryolarıyla kontrol ediyoruz.",
+    "goals": [
+      "İçerik, etkileşim ve kalıcılığı birlikte çalıştırmak",
+      "Mobil görünümü ve klavye kullanımını sınamak",
+      "Uygulamanın kullanımını kısa bir demoyla açıklamak"
+    ]
   }
 ]
