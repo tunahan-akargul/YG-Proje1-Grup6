@@ -4,7 +4,7 @@
 
 Öğrencilerin bir dersin haftalık akışını, öğrenme hedeflerini ve görevlerini tek ekranda görebildiği, görevleri tamamladıkça ilerlemesini görsel olarak takip edebildiği, mobilde de rahat kullanılan bir web panosu.
 
-> **Durum:** Hafta 3 geliştirme ve kontrolleri tamamlandı. Zorunlu özelliklerin hepsi çalışıyor; kontrast ve klavye kontrolleri yapıldı. Örnek verinin tamamlanması ve test kayıtları sürüyor.
+> **Durum:** Hafta 3 geliştirme ve kontrolleri tamamlandı. Örnek ders verisi P1-09 kapsamında 8 hafta / 20 göreve tamamlandı; güncel kullanıcı hikâyeleri ve kabul kriterleri [Hafta 4 raporunda](docs/Hafta4_Rapor.docx) yer alıyor. Tam veriyle son kabul testleri ve test kayıtlarının güncellenmesi bekleniyor.
 
 ![Masaüstü görünüm](docs/ekran-goruntuleri/masaustu-aydinlik.png)
 
@@ -167,6 +167,6 @@ Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs
 
 ## Bilinen eksikler
 
-- Örnek ders verisi şimdilik 2 hafta / 4 görevden oluşuyor; 8 hafta / 20 göreve tamamlanacak.
+- Önceki rapor ve test tablosundaki 2 hafta / 4 görev sonuçları tarihsel kayıtlardır; son kabul testinde güncel 8 hafta / 20 görev verisi kullanılmalıdır.
 - Test senaryoları tablosu ve hata kayıtları henüz GitHub issue olarak girilmedi.
 - Canlı demo bağlantısı yok.
