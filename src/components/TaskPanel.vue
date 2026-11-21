@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import { TASK_STATUSES, type Task, type TaskInput, type Week } from '@/types'
 import { toTaskInput, useTasks } from '@/composables/useTasks'
 import { filterTasks, useFilters, type StatusFilter } from '@/composables/useFilters'
 import FilterBar from './FilterBar.vue'
 import TaskItem from './TaskItem.vue'
 import TaskForm from './TaskForm.vue'
+import ConfirmDialog from './ConfirmDialog.vue'
 
 const props = defineProps<{
   weeks: Week[]
@@ -53,8 +54,25 @@ function onUpdate(taskId: string, input: TaskInput) {
   editingId.value = null
 }
 
+// Silinmek üzere onay bekleyen görev; null ise onay penceresi kapalıdır.
+const pendingRemoval = ref<Task | null>(null)
+const addButton = ref<HTMLButtonElement | null>(null)
+
 function onRemove(task: Task) {
-  if (window.confirm(`"${task.title}" görevi silinsin mi?`)) removeTask(task.id)
+  pendingRemoval.value = task
+}
+
+async function confirmRemove() {
+  if (pendingRemoval.value) removeTask(pendingRemoval.value.id)
+  pendingRemoval.value = null
+  // Silinen görevin düğmesi artık yok; pencere kapandıktan sonra odağı
+  // panelde mantıklı bir yere taşı.
+  await nextTick()
+  addButton.value?.focus()
+}
+
+function cancelRemove() {
+  pendingRemoval.value = null
 }
 </script>
 
@@ -62,7 +80,7 @@ function onRemove(task: Task) {
   <section class="task-panel" aria-labelledby="task-panel-title">
     <div class="panel-header">
       <h2 id="task-panel-title">Görevler</h2>
-      <button v-if="!isAdding" type="button" class="btn btn-primary" @click="isAdding = true">
+      <button v-if="!isAdding" ref="addButton" type="button" class="btn btn-primary" @click="isAdding = true">
         + Görev ekle
       </button>
     </div>
@@ -108,6 +126,15 @@ function onRemove(task: Task) {
       </template>
       <p v-else>Bu hafta için henüz görev yok. “Görev ekle” ile kendi görevini ekleyebilirsin.</p>
     </div>
+
+    <ConfirmDialog
+      :open="pendingRemoval !== null"
+      title="Görev silinsin mi?"
+      :message="`“${pendingRemoval?.title ?? ''}” görevi ve durumu kalıcı olarak silinecek.`"
+      confirm-label="Sil"
+      @confirm="confirmRemove"
+      @cancel="cancelRemove"
+    />
   </section>
 </template>
 
