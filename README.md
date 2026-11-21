@@ -35,12 +35,12 @@ Panoda gösterilen ders (*Web Teknolojilerine Giriş*) kurgusal bir örnek derst
 
 Tüm üyeler aynı zamanda geliştiricidir.
 
-| Üye | Rol | GitHub |
-|---|---|---|
-| Çağrı Aydemir | Lider + Geliştirici | *(eklenecek)* |
-| Caner Görez | Analist / Gereksinim + Geliştirici | *(eklenecek)* |
-| Kamil Kurt | Test / Kalite + Geliştirici | *(eklenecek)* |
-| Tunahan Akargül | Dokümantasyon / Sunum + Geliştirici | [@tunahan-akargul](https://github.com/tunahan-akargul) |
+| Üye | Rol | GitHub | Sorumlu olduğu işler |
+|---|---|---|---|
+| Çağrı Aydemir | Lider + Geliştirici | [@CagriAydemir](https://github.com/CagriAydemir) | Görev dağılımı, issue ve PR yönetimi (#4–#13, #15) |
+| Caner Görez | Analist / Gereksinim + Geliştirici | [@Iuppitter](https://github.com/Iuppitter) | Örnek ders verisi ve analist raporu (#15, PR #14) |
+| Kamil Kurt | Test / Kalite + Geliştirici | [@lilahoshi](https://github.com/lilahoshi) | Test senaryoları ve hata kayıtları (#2, #3, #7, #12) |
+| Tunahan Akargül | Dokümantasyon / Sunum + Geliştirici | [@tunahan-akargul](https://github.com/tunahan-akargul) | Arayüz ve işlevler (#4–#6, #8–#11), hata düzeltmeleri, raporlar, README |
 
 ## Kullanılan teknolojiler
 
@@ -131,6 +131,8 @@ YG-Proje1-Grup6/
    ├─ Hafta1_Rapor.docx
    ├─ Hafta2_Rapor.docx
    ├─ Hafta3_Rapor.docx
+   ├─ Hafta4_Rapor.docx    # analist raporu: kullanıcı hikâyeleri, kabul kriterleri
+   ├─ test-senaryolari.md
    ├─ ekran-goruntuleri/
    └─ presentation/    # sunum dosyası
 ```
@@ -162,11 +164,10 @@ Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs
 |---|---|---|
 | 1 | İhtiyaç analizi, kullanıcı hikâyeleri, repository, görev planı | ✅ Tamamlandı |
 | 2 | Arayüz/teknik tasarım, temel yapı ve ana işlevler | ✅ Tamamlandı |
-| 3 | Entegrasyon, erişilebilirlik ve test, hata düzeltme, görsel tasarım | ⏳ Geliştirme ve kontroller bitti; örnek veri ve test kayıtları sürüyor |
+| 3 | Entegrasyon, erişilebilirlik ve test, hata düzeltme, görsel tasarım | ✅ Tamamlandı |
 | 4 | Kalite kontrol, kullanıcı dokümanı, rapor, sunum ve demo | ⬜ |
 
 ## Bilinen eksikler
 
 - Önceki rapor ve test tablosundaki 2 hafta / 4 görev sonuçları tarihsel kayıtlardır; son kabul testinde güncel 8 hafta / 20 görev verisi kullanılmalıdır.
-- Test senaryoları tablosu ve hata kayıtları henüz GitHub issue olarak girilmedi.
 - Canlı demo bağlantısı yok.
