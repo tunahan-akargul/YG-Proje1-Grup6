@@ -47,7 +47,7 @@ const statusOptions: { value: StatusFilter; label: string }[] = [
       <legend class="visually-hidden">Duruma göre filtrele</legend>
       <label v-for="option in statusOptions" :key="option.value" class="status-option">
         <input v-model="filters.status" type="radio" :name="`${id}-status`" :value="option.value" />
-        <span>{{ option.label }} <span class="count">{{ counts[option.value] }}</span></span>
+        <span class="chip">{{ option.label }} <span class="count">{{ counts[option.value] }}</span></span>
       </label>
     </fieldset>
   </div>
@@ -94,35 +94,37 @@ const statusOptions: { value: StatusFilter; label: string }[] = [
   opacity: 0;
 }
 
-.status-option span {
-  display: inline-block;
-  padding: 6px 12px;
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 36px;
+  padding: 6px 14px;
   font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
   border: 1px solid var(--color-border);
   border-radius: 999px;
   background: var(--color-surface);
   cursor: pointer;
 }
 
-.status-option .count {
-  padding: 0 0 0 var(--space-1);
-  border: 0;
-  background: none;
+.count {
   color: var(--color-text-muted);
 }
 
-.status-option input:checked + span {
+.status-option input:checked + .chip {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-primary-text);
 }
 
-.status-option input:checked + span .count {
+.status-option input:checked + .chip .count {
   color: inherit;
 }
 
-.status-option input:focus-visible + span {
+.status-option input:focus-visible + .chip {
   outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -130,6 +132,18 @@ const statusOptions: { value: StatusFilter; label: string }[] = [
 @media (max-width: 600px) {
   .row {
     flex-direction: column;
+  }
+
+  /* Dar ekranda (issue #2): 2×2 düzenli ızgara, parmakla rahat basılan 44px yükseklik. */
+  .status-filter {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .chip {
+    width: 100%;
+    min-height: 44px;
   }
 }
 </style>
