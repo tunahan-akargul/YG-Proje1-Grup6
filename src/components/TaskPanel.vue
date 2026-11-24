@@ -53,8 +53,22 @@ function onUpdate(taskId: string, input: TaskInput) {
   editingId.value = null
 }
 
+const pendingRemove = ref<Task | null>(null)
+const confirmDialog = ref<HTMLDialogElement | null>(null)
+
 function onRemove(task: Task) {
-  if (window.confirm(`"${task.title}" görevi silinsin mi?`)) removeTask(task.id)
+  pendingRemove.value = task
+  confirmDialog.value?.showModal()
+}
+
+function confirmRemove() {
+  if (pendingRemove.value) removeTask(pendingRemove.value.id)
+  closeConfirm()
+}
+
+function closeConfirm() {
+  confirmDialog.value?.close()
+  pendingRemove.value = null
 }
 </script>
 
@@ -108,6 +122,24 @@ function onRemove(task: Task) {
       </template>
       <p v-else>Bu hafta için henüz görev yok. “Görev ekle” ile kendi görevini ekleyebilirsin.</p>
     </div>
+
+    <dialog
+      ref="confirmDialog"
+      class="confirm-dialog"
+      aria-labelledby="confirm-dialog-title"
+      @cancel.prevent="closeConfirm"
+    >
+      <h3 id="confirm-dialog-title">Görevi sil</h3>
+      <p v-if="pendingRemove">
+        “{{ pendingRemove.title }}” görevini silmek istediğinize emin misiniz?
+      </p>
+      <div class="confirm-actions">
+        <button type="button" class="btn btn-ghost" @click="closeConfirm">Vazgeç</button>
+        <button type="button" class="btn btn-primary btn-confirm-danger" @click="confirmRemove">
+          Sil
+        </button>
+      </div>
+    </dialog>
   </section>
 </template>
 
@@ -164,5 +196,42 @@ function onRemove(task: Task) {
 
 .empty p:last-child {
   margin-bottom: 0;
+}
+
+.task-panel > .confirm-dialog {
+  margin: auto;
+  max-width: 400px;
+  width: calc(100% - var(--space-8));
+  padding: var(--space-6);
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.confirm-dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+.confirm-dialog h3 {
+  font-size: 1.05rem;
+  margin: 0 0 var(--space-2);
+}
+
+.confirm-dialog p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.btn-confirm-danger {
+  background: var(--color-danger);
+  color: var(--color-primary-text);
 }
 </style>

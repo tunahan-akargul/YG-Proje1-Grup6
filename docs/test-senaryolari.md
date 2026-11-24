@@ -2,14 +2,14 @@
 
 **Proje:** Etkileşimli Ders Deneyimi Panosu (YG-Proje1-Grup6)  
 **Test Sorumlusu:** Leyla (Test / Kalite)  
-**Test Tarihi:** 3 Kasım 2026  
+**Test Tarihi:** 3 Kasım 2026 (Hafta 3) · Son Güncelleme: 24 Kasım 2026 (Hafta 4 / P1-16)  
 **Test Ortamları:**
 * **Masaüstü:** Chrome / Firefox (masaüstü çözünürlüğü)
 * **Mobil:** Safari (iOS) / Chrome (Android)
 
 ---
 
-## 1. Test Senaryoları ve Sonuçları Tablosu
+## 1. Hafta 3 Test Senaryoları ve Sonuçları (2 Hafta / 4 Görev — Tarihsel Kayıt)
 
 | ID | Modül / Özellik | Test Adımları | Beklenen Sonuç | Gerçek Sonuç (Masaüstü) | Gerçek Sonuç (Mobil) | Durum |
 | :--- | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -24,3 +24,20 @@
 | **TS-09** | Veri Kalıcılığı (localStorage) | 1. Görev durumunu değiştir veya görev ekle.<br>2. Temayı karanlık yap.<br>3. Sayfayı yenile (F5 / Refresh). | Sayfa yenilendiğinde görev durumları, eklenen görevler, seçili hafta ve tema aynen korunmalı. | Sayfa yenilendiğinde `localStorage` üzerinden son durum eksiksiz geri yüklendi. | Mobil sekme yenilendiğinde ve tarayıcı kapatılıp açıldığında tercihler korundu. | ✅ Geçti |
 | **TS-10** | Mobil Responsive ve Taşma | 1. Mobil ekranda dikey ve yatay kaydırma yap.<br>2. Buton ve dokunma alanlarını dene. | Ekran tek sütuna inmeli; yatay taşma olmamalı; butonlar parmakla rahat basılabilmeli. | N/A (Masaüstü iki sütunlu düzen hatasız çalıştı). | Tek sütunlu düzene başarıyla geçti; ancak dar ekranlarda (≤375px) filtre radyo butonları çok sıkışıyor. | ⚠️ İyileştirme (P1-10) |
 | **TS-11** | Silme İşlemi Kullanıcı Deneyimi | 1. Görev sil butonuna tıkla.<br>2. Onay penceresi davranışını test et. | Kullanıcıya modern ve erişilebilir bir onay kutusu sunulmalı. | Standart tarayıcı `window.confirm` popup'ı açıldı; işlevsel ama modern UI ile uyumsuz. | Mobilde standart `window.confirm` popup'ı tam ekranı bloke ediyor ve tema uyumu yok. | ⚠️ İyileştirme (P1-15) |
+
+---
+
+## 2. Hafta 4 Son Kabul ve Regresyon Testleri (P1-16 — 8 Hafta / 20 Görev)
+
+*Örnek veri `P1-09` kapsamında 8 hafta / 20 göreve tamamlandıktan ve GitHub Issue `#2` (`P1-10`) ile Issue `#3` (`P1-15`) kod düzeltmeleri uygulandıktan sonra güncel sürüm üzerinde çalıştırılan son kabul testleri:*
+
+| ID | Kapsam (KH / İş) | Test Adımları | Beklenen Sonuç | Gerçek Sonuç (Masaüstü) | Gerçek Sonuç (Mobil) | Durum |
+| :--- | :--- | :--- | :--- | :--- | :--- | :---: |
+| **KT-01** | `KH-01`, `KH-02`, `KH-12` | 1. Sayfayı temiz profilde aç ve 8 hafta kartını (1–8) kontrol et.<br>2. 8. hafta kartına tıkla ve detay panelini incele. | 8 hafta kartı sıralı görünmeli (dağılım: 2-2-3-3-3-3-2-2); 8. hafta seçilince 3 öğrenme hedefi ve yalnızca `t19`–`t20` görevleri listelenmeli. | 8 hafta kartı doğru dağılımla listelendi; 8. hafta seçildiğinde detay paneli ve liste `t19`–`t20` ile güncellendi. | Dikey tek sütunda 8 hafta kartının tamamına erişildi; 8. hafta seçimi ve görev listesi sorunsuz çalıştı. | ✅ Geçti |
+| **KT-02** | `KH-03`, `KH-07` | 1. Temiz başlangıçta genel ilerlemeyi kontrol et.<br>2. `t1` görevini "Tamamlandı" yap.<br>3. 3 görevli 3. haftada 1 görevi "Tamamlandı", 1 görevi "Devam ediyor" yap. | Başlangıçta `0/20 (%0)` görünmeli; `t1` tamamlanınca genel `1/20 (%5)`, 1. hafta `1/2 (%50)` olmalı; 3. haftada 1 tamamlanan `%33` vermeli, "Devam ediyor" tamamlanana sayılmamalı. | Genel ilerleme `0/20 (%0)` → `1/20 (%5)`, 1. hafta `%50`, 3. hafta `%33` olarak hesaplandı; "Devam ediyor" sayaca eklenmedi. | Mobil dropdown ile durum güncellendikten sonra halka ve haftalık ilerleme çubukları doğru oranlarla güncellendi. | ✅ Geçti |
+| **KT-03** | `KH-05` | 1. Hafta filtresinden "Tüm haftalar", ardından "6. hafta" seç.<br>2. Eşleşmeyen filtre uygulayıp "Filtreleri temizle" butonuna bas. | "Tüm haftalar" 20 görevi, "6. hafta" yalnızca `t14–t16` (3 görev) listelemeli; "Filtreleri temizle" aramayı ve durum filtresini sıfırlayıp seçili haftayı korumalı. | 20 görev ve 6. haftadaki 3 görev doğru listelendi; temizleme butonu aramayı/durumu sıfırlayıp hafta filtresini korudu. | Mobil görünümde hafta açılır listesi ve "Filtreleri temizle" butonu beklenen davranışı eksiksiz sağladı. | ✅ Geçti |
+| **KT-04** | `KH-06` | 1. "Tüm haftalar" + "Tümü" seçiliyken arama kutusuna sırasıyla `"İLERLEME"`, `"KEŞİF"` ve `"eşleşmeyen-xyz"` yaz. | `"İLERLEME"` `t10` görevini, `"KEŞİF"` `t1` görevini bulmalı; `"eşleşmeyen-xyz"` boş durum mesajını göstermeli. | Türkçe büyük/küçük harf dönüşümüyle `t10` ve `t1` bulundu; eşleşmeyen aramada boş liste mesajı gösterildi. | Mobil klavyeyle Türkçe karakter araması anlık ve doğru sonuç verdi. | ✅ Geçti |
+| **KT-05** | `KH-11`, `P1-15` | 1. 8. haftaya yeni görev ekle, ardından boş (`""`) ve 2 karakterli (`"ab"`) başlık dene.<br>2. Eklenen görevi düzenle; "Sil" butonuna basıp önce "Vazgeç" / `Escape`, sonra "Sil" ile onayla. | Geçerli eklemede toplam `21`, 8. hafta `3` olmalı; geçersiz başlıklar JS doğrulamasıyla reddedilmeli; silmede yeni `<dialog>` modalı açılıp iptalde korumalı, onayda kaldırmalı. | Form validasyonu geçersiz başlıkları reddetti; ekleme sonrası toplam `21` oldu; `<dialog>` modalı tema uyumlu açıldı ve silme/vazgeç akışı çalıştı. | Mobilde form ve tema uyumlu `<dialog>` onay modalı ekranı kilitlemeden düzgün açıldı, vazgeç ve silme işlemleri doğru çalıştı. | ✅ Geçti |
+| **KT-06** | `KH-04`, `KH-08` | 1. Temayı karanlık yap, görev ekle/durum değiştir ve arama kutusuna metin yaz.<br>2. Sayfayı yenile (`F5`).<br>3. `localStorage` içine bozuk JSON yazıp yenile. | Yenilemede tema, görevler, durumlar ve filtreler korunmalı, arama metni sıfırlanmalı; bozuk kayıtta uygulama çökmeden varsayılana dönmeli. | Tüm seçimler ve kişisel görev korundu, arama alanı temizlendi; bozuk `localStorage` kaydında uygulama çökmeden varsayılana döndü. | Mobil tarayıcıda yenileme sonrası tema ve görev verileri korundu. | ✅ Geçti |
+| **KT-07** | `KH-09`, `P1-10` | 1. Sayfayı `375px`, `768px` ve `1280px` genişlikte tüm görevler listelenirken incele.<br>2. `375px` mobilde durum filtre butonlarının aralığını ve tıklanabilirliğini test et. | Yatay sayfa taşması olmamalı; `375px` mobilde durum filtre hapları güncellenmiş boşluk (`12px`) ve `44px` yükseklikle sıkışmadan seçilebilmeli. | `768px` ve `1280px` genişliklerde taşma veya üst üste binme görülmedi. | `375px` mobilde yatay taşma yok; `FilterBar.vue` düzeltmesiyle filtre butonları satır kırıldığında rahat boşluk ve `44px` yükseklikle kullanıldı. | ✅ Geçti |
+| **KT-08** | `KH-10` | 1. Yalnızca klavyeyle (`Tab`, `Enter`, `Space`, ok tuşları, `Escape`) kartları, filtreleri, formu ve `<dialog>` modalını gez.<br>2. İki temada odak halkası ve kontrastı kontrol et. | Odak görünür ve sıralı olmalı; geçersiz form ilk hatalı alana odaklanmalı; `Escape` formu ve `<dialog>` modalını kapatmalı; kontrast WCAG AA'yı geçmeli. | Tüm klavye akışları, `Escape` ile kapatma, hatalı alana odaklanma ve iki temadaki `:focus-visible` ile kontrast gereksinimleri geçti. | N/A (Masaüstü klavye testi geçti; mobilde odak ve form etiketleri doğrulandı). | ✅ Geçti |

@@ -131,5 +131,16 @@ const statusOptions: { value: StatusFilter; label: string }[] = [
   .row {
     flex-direction: column;
   }
+
+  .status-filter {
+    gap: var(--space-3);
+  }
+
+  .status-option > span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--space-2) 14px;
+  }
 }
 </style>
