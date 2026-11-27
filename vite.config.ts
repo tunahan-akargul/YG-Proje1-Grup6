@@ -6,6 +6,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Göreli yollar: uygulama hem yerelde hem GitHub Pages alt klasöründe çalışır
+  base: './',
   plugins: [
     vue(),
     vueDevTools(),
