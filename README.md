@@ -4,7 +4,7 @@
 
 Öğrencilerin bir dersin haftalık akışını, öğrenme hedeflerini ve görevlerini tek ekranda görebildiği, görevleri tamamladıkça ilerlemesini görsel olarak takip edebildiği, mobilde de rahat kullanılan bir web panosu.
 
-> **Durum:** v1.0 — Proje tamamlandı. 8 hafta / 20 görevlik örnek veriyle son kabul testlerinin tamamı geçti. [Kullanıcı kılavuzu](docs/Kullanici_Kilavuzu.pdf) · [Proje raporu](docs/Proje_Raporu.pdf) · [Sunum](presentation/Proje1_Grup6_Sunum.pptx)
+> **Durum:** v1.0 — Proje tamamlandı. 8 hafta / 20 görevlik örnek veriyle son kabul testlerinin tamamı geçti. [Canlı demo](https://tunahan-akargul.github.io/YG-Proje1-Grup6/) · [Kullanıcı kılavuzu](docs/Kullanici_Kilavuzu.pdf) · [Proje raporu](docs/Proje_Raporu.pdf) · [Sunum](presentation/Proje1_Grup6_Sunum.pptx)
 
 ![Masaüstü görünüm](docs/ekran-goruntuleri/masaustu-aydinlik.png)
 
@@ -166,7 +166,7 @@ Ayrıntılar için [`docs/`](docs/) klasöründeki haftalık raporlara bakabilir
 
 ## Demo ve ekran görüntüleri
 
-**Canlı demo:** henüz yok. Uygulama [Kurulum](#kurulum) adımlarıyla yerelde çalıştırılabilir.
+**Canlı demo:** https://tunahan-akargul.github.io/YG-Proje1-Grup6/ — `main` dalına her gönderimde GitHub Actions ile otomatik yayınlanır. Uygulama [Kurulum](#kurulum) adımlarıyla yerelde de çalıştırılabilir.
 
 | Mobil — aydınlık | Mobil — karanlık |
 |---|---|
@@ -188,4 +188,3 @@ Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs
 - Veriler yalnızca kullanılan tarayıcıda saklanır; cihazlar arası senkronizasyon yoktur.
 - Ders içeriği sabit JSON dosyasıdır; öğretmen paneli yoktur.
 - Otomatik birim testleri yoktur; testler elle yürütülmüştür.
-- Canlı demo bağlantısı yok; uygulama yerelde çalıştırılır.
