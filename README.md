@@ -4,7 +4,7 @@
 
 Öğrencilerin bir dersin haftalık akışını, öğrenme hedeflerini ve görevlerini tek ekranda görebildiği, görevleri tamamladıkça ilerlemesini görsel olarak takip edebildiği, mobilde de rahat kullanılan bir web panosu.
 
-> **Durum:** Hafta 3 geliştirme ve kontrolleri tamamlandı. Örnek ders verisi P1-09 kapsamında 8 hafta / 20 göreve tamamlandı; güncel kullanıcı hikâyeleri ve kabul kriterleri [Hafta 4 raporunda](docs/Hafta4_Rapor.docx) yer alıyor. Tam veriyle son kabul testleri ve test kayıtlarının güncellenmesi bekleniyor.
+> **Durum:** v1.0 — Proje tamamlandı. 8 hafta / 20 görevlik örnek veriyle son kabul testlerinin tamamı geçti. [Kullanıcı kılavuzu](docs/Kullanici_Kilavuzu.pdf) · [Proje raporu](docs/Proje_Raporu.pdf) · [Sunum](presentation/Proje1_Grup6_Sunum.pptx)
 
 ![Masaüstü görünüm](docs/ekran-goruntuleri/masaustu-aydinlik.png)
 
@@ -17,6 +17,7 @@
 - [Kurulum](#kurulum)
 - [Çalıştırma](#çalıştırma)
 - [Kullanım](#kullanım)
+- [Belgeler](#belgeler)
 - [Proje yapısı](#proje-yapısı)
 - [Çalışma düzeni](#çalışma-düzeni)
 - [Demo ve ekran görüntüleri](#demo-ve-ekran-görüntüleri)
@@ -35,12 +36,12 @@ Panoda gösterilen ders (*Web Teknolojilerine Giriş*) kurgusal bir örnek derst
 
 Tüm üyeler aynı zamanda geliştiricidir.
 
-| Üye | Rol | GitHub |
-|---|---|---|
-| Çağrı Aydemir | Lider + Geliştirici | *(eklenecek)* |
-| Caner Görez | Analist / Gereksinim + Geliştirici | *(eklenecek)* |
-| Kamil Kurt | Test / Kalite + Geliştirici | *(eklenecek)* |
-| Tunahan Akargül | Dokümantasyon / Sunum + Geliştirici | [@tunahan-akargul](https://github.com/tunahan-akargul) |
+| Üye | Rol | GitHub | Sorumlu olduğu işler |
+|---|---|---|---|
+| Çağrı Aydemir | Lider + Geliştirici | [@CagriAydemir](https://github.com/CagriAydemir) | Görev dağılımı, issue ve PR yönetimi (#4–#13, #15) |
+| Caner Görez | Analist / Gereksinim + Geliştirici | [@Iuppitter](https://github.com/Iuppitter) | Örnek ders verisi ve analist raporu (#15, PR #14) |
+| Kamil Kurt | Test / Kalite + Geliştirici | [@lilahoshi](https://github.com/lilahoshi) | Test senaryoları, kabul testleri, #2 ve #3 düzeltmeleri (#7, #12) |
+| Tunahan Akargül | Dokümantasyon / Sunum + Geliştirici | [@tunahan-akargul](https://github.com/tunahan-akargul) | Arayüz ve işlevler (#4–#6, #8–#11), raporlar, README, wireframe, kullanıcı kılavuzu, proje raporu, sunum |
 
 ## Kullanılan teknolojiler
 
@@ -111,7 +112,18 @@ npm run preview
 5. **Kendi görevin:** *+ Görev ekle* ile yeni görev oluştur. Kendi eklediğin görevleri *Düzenle* ve *Sil* düğmeleriyle yönetebilirsin.
 6. **Tema:** Sağ üstteki düğmeyle karanlık ve aydınlık tema arasında geçiş yap.
 
-Bütün seçimler tarayıcıda saklanır; sayfa yenilense de korunur.
+Bütün seçimler tarayıcıda saklanır; sayfa yenilense de korunur. Ekran görüntülü, adım adım anlatım için [kullanıcı kılavuzuna](docs/Kullanici_Kilavuzu.pdf) bakın.
+
+## Belgeler
+
+| Belge | İçerik |
+|---|---|
+| [Kullanıcı kılavuzu](docs/Kullanici_Kilavuzu.pdf) | Kurulum, ekranların tanıtımı, tüm özelliklerin kullanımı, sorun giderme |
+| [Proje raporu](docs/Proje_Raporu.pdf) | Gereksinimler, tasarım, mimari, test, ekip katkıları, sınırlamalar |
+| [Sunum](presentation/Proje1_Grup6_Sunum.pptx) | 12 slaytlık grup sunumu ve canlı demo akışı |
+| [Sayfa haritası ve wireframe](docs/tasarim/sayfa-haritasi-wireframe.png) | Ekran akışı, masaüstü ve mobil taslak |
+| [Test senaryoları](docs/test-senaryolari.md) | Senaryo testleri (TS) ve son kabul testleri (KT) |
+| [Haftalık raporlar](docs/) | Hafta 1–4 raporları |
 
 ## Proje yapısı
 
@@ -131,8 +143,14 @@ YG-Proje1-Grup6/
    ├─ Hafta1_Rapor.docx
    ├─ Hafta2_Rapor.docx
    ├─ Hafta3_Rapor.docx
-   ├─ ekran-goruntuleri/
-   └─ presentation/    # sunum dosyası
+   ├─ Hafta4_Rapor.docx    # analist raporu: kullanıcı hikâyeleri, kabul kriterleri
+   ├─ test-senaryolari.md
+   ├─ Kullanici_Kilavuzu.pdf
+   ├─ Proje_Raporu.pdf
+   ├─ tasarim/          # sayfa haritası ve wireframe
+   └─ ekran-goruntuleri/
+presentation/
+└─ Proje1_Grup6_Sunum.pptx
 ```
 
 **Mantık ve görünüm ayrıdır:** `composables/` uygulamanın mantığını (durumlar, filtreleme, ilerleme hesabı, kalıcılık), `components/` ekranda görünen parçaları içerir.
@@ -162,11 +180,12 @@ Masaüstü karanlık tema: [`docs/ekran-goruntuleri/masaustu-karanlik.png`](docs
 |---|---|---|
 | 1 | İhtiyaç analizi, kullanıcı hikâyeleri, repository, görev planı | ✅ Tamamlandı |
 | 2 | Arayüz/teknik tasarım, temel yapı ve ana işlevler | ✅ Tamamlandı |
-| 3 | Entegrasyon, erişilebilirlik ve test, hata düzeltme, görsel tasarım | ⏳ Geliştirme ve kontroller bitti; örnek veri ve test kayıtları sürüyor |
-| 4 | Kalite kontrol, kullanıcı dokümanı, rapor, sunum ve demo | ⬜ |
+| 3 | Entegrasyon, erişilebilirlik ve test, hata düzeltme, görsel tasarım | ✅ Tamamlandı |
+| 4 | Kalite kontrol, kullanıcı dokümanı, rapor, sunum ve demo | ✅ Tamamlandı |
 
 ## Bilinen eksikler
 
-- Önceki rapor ve test tablosundaki 2 hafta / 4 görev sonuçları tarihsel kayıtlardır; son kabul testinde güncel 8 hafta / 20 görev verisi kullanılmalıdır.
-- Test senaryoları tablosu ve hata kayıtları henüz GitHub issue olarak girilmedi.
-- Canlı demo bağlantısı yok.
+- Veriler yalnızca kullanılan tarayıcıda saklanır; cihazlar arası senkronizasyon yoktur.
+- Ders içeriği sabit JSON dosyasıdır; öğretmen paneli yoktur.
+- Otomatik birim testleri yoktur; testler elle yürütülmüştür.
+- Canlı demo bağlantısı yok; uygulama yerelde çalıştırılır.
